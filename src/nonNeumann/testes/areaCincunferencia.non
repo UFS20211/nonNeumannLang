@@ -1,0 +1,7 @@
+funcao numerica areaCircunferencia [ numero raio ] : [
+    lambda [valorRaio] : ( pi * valorRaio * valorRaio ) : [raio]
+].
+
+>> funcao numero principal [] : [
+    areaCircunferencia[ 12 ]
+].

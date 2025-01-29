@@ -1,0 +1,14 @@
+{-
+    2)
+    Função recursiva para calcular o
+    n-ésimo número de Fibonacci
+-}
+funcao numerica fibonacci [numero quantidade] : [
+    se (quantidade = 0) entao 0
+    senao se (quantidade = 1) entao 1
+    senao fibonacci[quantidade - 1] + fibonacci[quantidade - 2]
+].
+
+>> funcao booleana principal [] : [
+    fibonacci[ 5 ]
+].

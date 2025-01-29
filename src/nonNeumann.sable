@@ -1,0 +1,28 @@
+Package nonNeumann;
+
+Helpers
+  digito = ['0' .. '9'];
+  letras = ['a' .. 'z'] | ['A' .. 'Z'];
+  espaco = ' ';
+  rc = 13;
+  nl = 10;
+
+Tokens
+  comentario_linha = '#'
+  comentario_bloco = '#'
+  numero = digito+;
+  soma = '+';
+  menos = '-';
+  multiplicacao = '*';
+  div = '/';
+  divisao_inteira = '//';
+  igual = '=';
+  maior_que = '>';
+  menor_que = '<';
+  par_esq = '(';
+  par_dir = ')';
+  vazio = (espaco | rc | nl)+;
+
+
+Ignored Tokens
+  vazio, comentario_linha, comentario_bloco;
