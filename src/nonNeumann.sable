@@ -1,16 +1,21 @@
 Package nonNeumann;
 
 Helpers
-  digito = ['0' .. '9'];
-  letras = ['a' .. 'z'] | ['A' .. 'Z'];
-  espaco = ' ';
-  rc = 13;
-  nl = 10;
+  digito = ['0'..'9'];
+  letra = ['a'..'z'] | ['A'..'Z'];
+  espaco_em_branco = (' ' | '\t' | '\r' | '\n')+;
+  cr = 13;
+  lf = 10;
+  eol = cr lf | cr | lf;
+  caracteres = [0 .. 0xffff];
 
 Tokens
-  comentario_linha = '#'
-  comentario_bloco = '#'
-  numero = digito+;
+
+  comentario_bloco = '{-' [caracteres - ['-' + '}']]* '-}';
+  comentario_linha = '#' [caracteres - [cr + lf]] * eol;
+  espaco_em_branco = espaco_em_branco;
+  numero=digito+;
+  identificador = letra+;
   soma = '+';
   menos = '-';
   multiplicacao = '*';
@@ -19,10 +24,30 @@ Tokens
   igual = '=';
   maior_que = '>';
   menor_que = '<';
-  par_esq = '(';
-  par_dir = ')';
-  vazio = (espaco | rc | nl)+;
-
+  operador_booleano_e = 'e';
+  operador_booleano_ou = 'ou';
+  operador_booleano_nao = 'nao';
+  operador_vinculacao = ':=';
+  ponto_final = '.';
+  parentese_esquerdo = '(';
+  parentese_direito = ')';
+  colchete_esquerdo = '[';
+  colchete_direito = ']';
+  identificador_funcao_main = '>>';
+  pipe = '|';
+  booleano_verdade = 'verdade';
+  booleano_falso = 'falso';
+  numero_real = digito+ ',' digito+;
+  numero_binario = '0b'(0|1);
+  reservada_se = 'se';
+  reservada_senao = 'senao';
+  reservada_numerica = 'numerica';
+  reservada_numerico = 'numerico';
+  reservada_booleano = 'booleano';
+  reservada_booleana = 'booleana';
+  reservada_funcao = 'funcao';
+  reservada_const = 'const';
+  reservada_lambda = 'lambda';
 
 Ignored Tokens
-  vazio, comentario_linha, comentario_bloco;
+   espaco_em_branco, comentario_linha, comentario_bloco;
